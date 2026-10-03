@@ -1,366 +1,4239 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Class Archive — Memories</title>
-  <meta name="description" content="Koleksi foto dan kenangan selama masa sekolah.">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    :root{
-      --bg:#f5f3ee;
-      --paper:#fffdf8;
-      --text:#171717;
-      --muted:#77736c;
-      --line:#ddd8cf;
-      --accent:#7b8f68;
-      --accent2:#d9b88f;
-      --dark:#1e211d;
-      --shadow:0 18px 45px rgba(31,31,26,.10);
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{
-      background:var(--bg);
-      color:var(--text);
-      font-family:'DM Sans',sans-serif;
-      overflow-x:hidden;
-    }
-    a{text-decoration:none;color:inherit}
-    button{font:inherit}
+<title>Our Class Archive — Memories</title>
 
-    /* grain */
-    body:before{
-      content:"";
-      position:fixed;inset:0;pointer-events:none;z-index:100;
-      opacity:.035;
-      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
-    }
+<meta name="description"
+content="Digital archive berisi foto, video, cerita, anggota kelas, dan kenangan selama masa sekolah.">
 
-    nav{
-      position:fixed;top:18px;left:50%;transform:translateX(-50%);
-      width:min(1100px,calc(100% - 32px));z-index:50;
-      padding:12px 16px 12px 20px;border:1px solid rgba(255,255,255,.7);
-      background:rgba(255,253,248,.78);backdrop-filter:blur(18px);
-      border-radius:100px;display:flex;align-items:center;justify-content:space-between;
-      box-shadow:0 8px 30px rgba(0,0,0,.06);
-    }
-    .brand{font-weight:700;letter-spacing:-.03em;display:flex;align-items:center;gap:9px}
-    .brand-dot{width:10px;height:10px;background:var(--accent);border-radius:50%;display:inline-block}
-    .navlinks{display:flex;gap:24px;font-size:13px;color:#5e5a53}
-    .navlinks a:hover{color:var(--text)}
-    .nav-btn{
-      border:0;background:var(--dark);color:white;padding:10px 16px;border-radius:50px;
-      cursor:pointer;font-size:12px;
-    }
+<style>
 
-    .hero{
-      min-height:92vh;display:flex;align-items:center;justify-content:center;
-      padding:140px 22px 80px;position:relative;
-    }
-    .hero-inner{width:min(1100px,100%);display:grid;grid-template-columns:1.15fr .85fr;gap:55px;align-items:center}
-    .eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:11px;color:var(--muted);margin-bottom:20px}
-    h1{
-      font-size:clamp(54px,8vw,105px);line-height:.88;letter-spacing:-.065em;
-      max-width:780px;font-weight:600;
-    }
-    h1 em{font-family:'Playfair Display',serif;font-weight:500}
-    .hero-copy{max-width:540px;color:var(--muted);line-height:1.75;margin-top:26px;font-size:15px}
-    .hero-meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-    .pill{border:1px solid var(--line);border-radius:100px;padding:9px 14px;font-size:12px;background:rgba(255,255,255,.45)}
-    .hero-photo{
-      position:relative;height:510px;transform:rotate(3deg);
-      background:#e7e0d4;padding:14px;box-shadow:var(--shadow);
-    }
-    .hero-photo img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.85)}
-    .tape{position:absolute;width:105px;height:27px;background:rgba(219,190,148,.62);top:-13px;left:50%;transform:translateX(-50%) rotate(-4deg);z-index:2}
-    .hero-label{
-      position:absolute;bottom:25px;left:-30px;background:var(--paper);padding:16px 20px;
-      box-shadow:0 10px 30px rgba(0,0,0,.12);transform:rotate(-5deg);font-family:'Playfair Display',serif;font-size:18px;
-    }
-    .scroll-note{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);font-size:11px;color:var(--muted)}
+/* =========================================================
+   FONT
+========================================================= */
 
-    section{width:min(1100px,calc(100% - 36px));margin:0 auto;padding:95px 0}
-    .section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:35px}
-    .section-kicker{font-size:11px;text-transform:uppercase;letter-spacing:.17em;color:var(--muted);margin-bottom:10px}
-    h2{font-size:clamp(34px,5vw,58px);letter-spacing:-.055em;line-height:.95}
-    .section-desc{max-width:370px;color:var(--muted);font-size:13px;line-height:1.7}
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap');
 
-    .timeline{display:flex;gap:10px;margin-bottom:34px;overflow:auto;padding-bottom:5px}
-    .filter{
-      border:1px solid var(--line);background:transparent;border-radius:100px;
-      padding:10px 17px;cursor:pointer;color:var(--muted);white-space:nowrap;font-size:12px;
-    }
-    .filter.active,.filter:hover{background:var(--dark);color:white;border-color:var(--dark)}
 
-    .gallery{
-      columns:3 250px;column-gap:18px;
-    }
-    .card{
-      break-inside:avoid;margin-bottom:18px;position:relative;cursor:pointer;
-      background:var(--paper);padding:10px;box-shadow:0 8px 25px rgba(0,0,0,.06);
-      transition:.35s ease;display:inline-block;width:100%;
-    }
-    .card:hover{transform:translateY(-6px) rotate(-.5deg);box-shadow:var(--shadow)}
-    .card img{width:100%;display:block;object-fit:cover;max-height:530px}
-    .card-info{padding:13px 5px 4px;display:flex;justify-content:space-between;gap:10px;align-items:start}
-    .card-title{font-weight:600;font-size:13px}
-    .card-date{font-size:10px;color:var(--muted);white-space:nowrap}
-    .card-caption{font-size:11px;color:var(--muted);line-height:1.5;margin-top:5px}
+/* =========================================================
+   ROOT
+========================================================= */
 
-    .memory-note{
-      margin-top:70px;background:var(--dark);color:white;padding:55px 50px;
-      border-radius:4px;position:relative;overflow:hidden;
-    }
-    .memory-note:after{
-      content:"✦";position:absolute;right:35px;top:10px;font-size:130px;opacity:.08;
-    }
-    .memory-note p{font-family:'Playfair Display',serif;font-size:clamp(25px,4vw,46px);line-height:1.15;max-width:850px}
-    .memory-note small{display:block;margin-top:22px;color:#aaa;font-size:11px;text-transform:uppercase;letter-spacing:.15em}
+:root{
+  --bg:#f5f3ee;
+  --paper:#fffdf8;
+  --text:#171717;
+  --muted:#77736c;
+  --line:#ddd8cf;
+  --accent:#7b8f68;
+  --accent-light:#dce4d5;
+  --accent2:#d9b88f;
+  --dark:#1e211d;
+  --white:#ffffff;
 
-    .year-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-    .year{
-      min-height:210px;padding:25px;background:var(--paper);border:1px solid var(--line);
-      position:relative;overflow:hidden;transition:.3s;
-    }
-    .year:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-    .year-number{font-size:70px;letter-spacing:-.08em;font-weight:700;line-height:.9}
-    .year-name{position:absolute;bottom:24px;left:25px;font-family:'Playfair Display',serif;font-size:23px}
-    .year-count{position:absolute;right:24px;bottom:26px;color:var(--muted);font-size:11px}
+  --shadow:
+    0 18px 45px rgba(31,31,26,.10);
 
-    footer{padding:50px 20px 80px;text-align:center;color:var(--muted);font-size:11px}
-    footer strong{color:var(--text)}
+  --shadow-heavy:
+    0 25px 70px rgba(31,31,26,.18);
+}
 
-    /* modal */
-    .modal{
-      position:fixed;inset:0;background:rgba(20,20,18,.82);z-index:200;
-      display:none;align-items:center;justify-content:center;padding:25px;
-      backdrop-filter:blur(8px);
-    }
-    .modal.show{display:flex}
-    .modal-box{max-width:900px;width:100%;position:relative}
-    .modal img{width:100%;max-height:78vh;object-fit:contain;display:block}
-    .modal-caption{color:white;margin-top:12px;font-size:12px}
-    .close{
-      position:absolute;right:0;top:-45px;background:white;border:0;width:34px;height:34px;
-      border-radius:50%;cursor:pointer;font-size:18px;
-    }
 
-    @media(max-width:760px){
-      nav{top:10px}
-      .navlinks{display:none}
-      .hero{padding-top:115px;min-height:auto}
-      .hero-inner{grid-template-columns:1fr;gap:40px}
-      .hero-photo{height:420px;width:88%;margin:auto}
-      .hero-label{left:-15px}
-      .section-head{display:block}
-      .section-desc{margin-top:15px}
-      section{padding:65px 0}
-      .year-grid{grid-template-columns:1fr}
-      .memory-note{padding:35px 25px}
-    }
-  </style>
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'DM Sans',sans-serif;
+  overflow-x:hidden;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+button,
+input,
+textarea{
+  font:inherit;
+}
+
+
+/* =========================================================
+   GRAIN
+========================================================= */
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:999;
+  opacity:.035;
+
+  background-image:url(
+    "data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E"
+  );
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+.reveal{
+  opacity:0;
+  transform:translateY(35px);
+  transition:
+    opacity .8s ease,
+    transform .8s ease;
+}
+
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+
+/* =========================================================
+   NAV
+========================================================= */
+
+nav{
+  position:fixed;
+  top:18px;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(1150px,calc(100% - 32px));
+  z-index:500;
+
+  padding:12px 16px 12px 20px;
+
+  border:1px solid rgba(255,255,255,.7);
+
+  background:
+    rgba(255,253,248,.78);
+
+  backdrop-filter:
+    blur(18px);
+
+  border-radius:100px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  box-shadow:
+    0 8px 30px rgba(0,0,0,.06);
+}
+
+.brand{
+  font-weight:700;
+  letter-spacing:-.03em;
+
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+
+.brand-dot{
+  width:10px;
+  height:10px;
+  background:var(--accent);
+  border-radius:50%;
+}
+
+.navlinks{
+  display:flex;
+  gap:24px;
+  font-size:13px;
+  color:#5e5a53;
+}
+
+.navlinks a{
+  transition:.25s;
+}
+
+.navlinks a:hover{
+  color:var(--accent);
+}
+
+.nav-btn{
+  border:0;
+  background:var(--dark);
+  color:white;
+
+  padding:10px 16px;
+
+  border-radius:50px;
+
+  cursor:pointer;
+  font-size:12px;
+
+  transition:.3s;
+}
+
+.nav-btn:hover{
+  transform:translateY(-2px);
+  background:var(--accent);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+  min-height:92vh;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:
+    140px
+    22px
+    80px;
+
+  position:relative;
+}
+
+.hero-inner{
+  width:min(1150px,100%);
+
+  display:grid;
+
+  grid-template-columns:
+    1.15fr
+    .85fr;
+
+  gap:55px;
+
+  align-items:center;
+}
+
+.eyebrow{
+  text-transform:uppercase;
+  letter-spacing:.18em;
+  font-size:11px;
+  color:var(--muted);
+  margin-bottom:20px;
+}
+
+h1{
+  font-size:
+    clamp(54px,8vw,105px);
+
+  line-height:.88;
+  letter-spacing:-.065em;
+
+  max-width:780px;
+  font-weight:600;
+}
+
+h1 em{
+  font-family:'Playfair Display',serif;
+  font-weight:500;
+}
+
+.hero-copy{
+  max-width:540px;
+
+  color:var(--muted);
+  line-height:1.75;
+
+  margin-top:26px;
+
+  font-size:15px;
+}
+
+.hero-meta{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:28px;
+}
+
+.pill{
+  border:1px solid var(--line);
+
+  border-radius:100px;
+
+  padding:
+    9px
+    14px;
+
+  font-size:12px;
+
+  background:
+    rgba(255,255,255,.45);
+}
+
+.hero-photo{
+  position:relative;
+
+  height:510px;
+
+  transform:rotate(3deg);
+
+  background:#e7e0d4;
+
+  padding:14px;
+
+  box-shadow:var(--shadow);
+
+  transition:.5s;
+}
+
+.hero-photo:hover{
+  transform:
+    rotate(0deg)
+    scale(1.015);
+
+  box-shadow:var(--shadow-heavy);
+}
+
+.hero-photo img{
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+  display:block;
+
+  filter:saturate(.85);
+}
+
+.tape{
+  position:absolute;
+
+  width:105px;
+  height:27px;
+
+  background:
+    rgba(219,190,148,.62);
+
+  top:-13px;
+  left:50%;
+
+  transform:
+    translateX(-50%)
+    rotate(-4deg);
+
+  z-index:2;
+}
+
+.hero-label{
+  position:absolute;
+
+  bottom:25px;
+  left:-30px;
+
+  background:var(--paper);
+
+  padding:
+    16px
+    20px;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.12);
+
+  transform:rotate(-5deg);
+
+  font-family:
+    'Playfair Display',
+    serif;
+
+  font-size:18px;
+}
+
+/* =========================================================
+   HERO LIVE CLOCK
+========================================================= */
+.hero-clock{position:absolute;top:108px;right:max(24px,calc((100% - 1150px)/2));width:178px;min-height:112px;padding:16px 17px 14px;border:1px solid rgba(123,143,104,.28);border-radius:22px;background:rgba(255,253,248,.72);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 18px 45px rgba(31,31,26,.10);overflow:hidden;z-index:20;animation:clockFloat 4s ease-in-out infinite}
+.hero-clock:before{content:"";position:absolute;width:90px;height:90px;right:-42px;top:-45px;border:1px solid rgba(123,143,104,.25);border-radius:50%;animation:clockOrbit 7s linear infinite}
+.hero-clock-orbit{position:absolute;width:8px;height:8px;right:24px;top:18px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px rgba(123,143,104,.10);animation:clockPulse 1.5s ease-in-out infinite}
+.hero-clock-top{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:8px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:9px}
+.hero-clock-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);animation:clockPulse 1.5s ease-in-out infinite}
+.hero-clock-time{font-variant-numeric:tabular-nums;font-size:27px;line-height:1;letter-spacing:-.055em;font-weight:700}
+.hero-clock-date{margin-top:8px;color:var(--muted);font-size:9px;line-height:1.4;white-space:nowrap}
+.hero-clock-line{display:flex;align-items:center;gap:5px;margin-top:12px}.hero-clock-line span{height:1px;flex:1;background:var(--line)}.hero-clock-line i{width:4px;height:4px;border-radius:50%;background:var(--accent2);animation:clockPulse 1s ease-in-out infinite}
+@keyframes clockFloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-5px) rotate(.5deg)}}
+@keyframes clockPulse{0%,100%{transform:scale(.8);opacity:.55}50%{transform:scale(1.35);opacity:1}}
+@keyframes clockOrbit{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@media(max-width:850px){.hero-clock{top:102px;right:18px;width:160px;min-height:104px}.hero-clock-time{font-size:23px}}
+@media(max-width:760px){.hero-clock{top:92px;right:16px;width:145px;min-height:92px;padding:12px 13px 11px;border-radius:18px}.hero-clock-top{font-size:7px;margin-bottom:7px}.hero-clock-time{font-size:20px}.hero-clock-date{font-size:8px;white-space:normal;max-width:115px}.hero-clock-line{margin-top:8px}}
+@media(prefers-reduced-motion:reduce){.hero-clock,.hero-clock-orbit,.hero-clock-dot,.hero-clock-line i,.hero-clock:before{animation:none}}
+
+.scroll-note{
+  position:absolute;
+
+  bottom:30px;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  font-size:11px;
+  color:var(--muted);
+
+  animation:
+    floatDown 2s ease-in-out infinite;
+}
+
+@keyframes floatDown{
+  0%,100%{
+    transform:
+      translate(-50%,0);
+  }
+
+  50%{
+    transform:
+      translate(-50%,7px);
+  }
+}
+
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+section{
+  width:
+    min(
+      1150px,
+      calc(100% - 36px)
+    );
+
+  margin:0 auto;
+
+  padding:95px 0;
+}
+
+.section-head{
+  display:flex;
+
+  justify-content:space-between;
+  align-items:end;
+
+  gap:30px;
+
+  margin-bottom:35px;
+}
+
+.section-kicker{
+  font-size:11px;
+
+  text-transform:uppercase;
+  letter-spacing:.17em;
+
+  color:var(--muted);
+
+  margin-bottom:10px;
+}
+
+h2{
+  font-size:
+    clamp(34px,5vw,58px);
+
+  letter-spacing:-.055em;
+  line-height:.95;
+}
+
+h2 em{
+  font-family:
+    'Playfair Display',
+    serif;
+
+  font-weight:500;
+}
+
+.section-desc{
+  max-width:370px;
+
+  color:var(--muted);
+
+  font-size:13px;
+  line-height:1.7;
+}
+
+
+/* =========================================================
+   GALLERY FILTER
+========================================================= */
+
+.timeline{
+  display:flex;
+
+  gap:10px;
+
+  margin-bottom:34px;
+
+  overflow:auto;
+
+  padding-bottom:5px;
+}
+
+.filter{
+  border:1px solid var(--line);
+
+  background:transparent;
+
+  border-radius:100px;
+
+  padding:
+    10px
+    17px;
+
+  cursor:pointer;
+
+  color:var(--muted);
+
+  white-space:nowrap;
+
+  font-size:12px;
+
+  transition:.25s;
+}
+
+.filter.active,
+.filter:hover{
+  background:var(--dark);
+  color:white;
+  border-color:var(--dark);
+}
+
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+.gallery{
+  columns:
+    3
+    250px;
+
+  column-gap:18px;
+}
+
+.card{
+  break-inside:avoid;
+
+  margin-bottom:18px;
+
+  position:relative;
+
+  cursor:pointer;
+
+  background:var(--paper);
+
+  padding:10px;
+
+  box-shadow:
+    0 8px 25px
+    rgba(0,0,0,.06);
+
+  transition:.35s ease;
+
+  display:inline-block;
+
+  width:100%;
+}
+
+.card:hover{
+  transform:
+    translateY(-6px)
+    rotate(-.5deg);
+
+  box-shadow:var(--shadow);
+}
+
+.card img{
+  width:100%;
+
+  display:block;
+
+  object-fit:cover;
+
+  max-height:530px;
+}
+
+.card-info{
+  padding:
+    13px
+    5px
+    4px;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  gap:10px;
+
+  align-items:start;
+}
+
+.card-title{
+  font-weight:600;
+  font-size:13px;
+}
+
+.card-date{
+  font-size:10px;
+  color:var(--muted);
+  white-space:nowrap;
+}
+
+.card-caption{
+  font-size:11px;
+
+  color:var(--muted);
+
+  line-height:1.5;
+
+  margin-top:5px;
+}
+
+
+/* =========================================================
+   ADD PHOTO CARD
+========================================================= */
+
+.add-photo-card{
+  break-inside:avoid;
+
+  margin-bottom:18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--accent-light),
+      var(--paper)
+    );
+
+  border:
+    1px dashed
+    var(--accent);
+
+  min-height:230px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+
+  cursor:pointer;
+
+  transition:.35s;
+}
+
+.add-photo-card:hover{
+  transform:
+    translateY(-6px);
+
+  box-shadow:var(--shadow);
+}
+
+.plus-circle{
+  width:65px;
+  height:65px;
+
+  border-radius:50%;
+
+  background:var(--dark);
+  color:white;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  font-size:30px;
+
+  margin:
+    auto
+    auto
+    14px;
+
+  transition:.3s;
+}
+
+.add-photo-card:hover
+.plus-circle{
+  background:var(--accent);
+
+  transform:
+    rotate(90deg)
+    scale(1.08);
+}
+
+.add-photo-text strong{
+  display:block;
+
+  font-size:14px;
+
+  margin-bottom:5px;
+}
+
+.add-photo-text span{
+  font-size:11px;
+  color:var(--muted);
+}
+
+
+/* =========================================================
+   MEMORY NOTE
+========================================================= */
+
+.memory-note{
+  margin-top:70px;
+
+  background:var(--dark);
+  color:white;
+
+  padding:
+    55px
+    50px;
+
+  border-radius:4px;
+
+  position:relative;
+
+  overflow:hidden;
+}
+
+.memory-note:after{
+  content:"✦";
+
+  position:absolute;
+
+  right:35px;
+  top:10px;
+
+  font-size:130px;
+
+  opacity:.08;
+}
+
+.memory-note p{
+  font-family:
+    'Playfair Display',
+    serif;
+
+  font-size:
+    clamp(25px,4vw,46px);
+
+  line-height:1.15;
+
+  max-width:850px;
+}
+
+.memory-note small{
+  display:block;
+
+  margin-top:22px;
+
+  color:#aaa;
+
+  font-size:11px;
+
+  text-transform:uppercase;
+
+  letter-spacing:.15em;
+}
+
+
+/* =========================================================
+   LIVE TIME
+========================================================= */
+
+.time-section{
+  background:
+    linear-gradient(
+      135deg,
+      #1e211d,
+      #30382c
+    );
+
+  color:white;
+
+  width:100%;
+  max-width:none;
+
+  margin:0;
+
+  padding:
+    90px
+    max(18px,calc((100% - 1150px)/2));
+}
+
+.time-container{
+  max-width:1150px;
+
+  margin:auto;
+
+  display:grid;
+
+  grid-template-columns:
+    1fr
+    1fr;
+
+  gap:60px;
+
+  align-items:center;
+}
+
+.time-label{
+  text-transform:uppercase;
+
+  font-size:10px;
+
+  letter-spacing:.2em;
+
+  color:#b9c5b1;
+
+  margin-bottom:15px;
+}
+
+.live-time{
+  font-size:
+    clamp(45px,7vw,90px);
+
+  line-height:.9;
+
+  letter-spacing:-.06em;
+
+  font-weight:600;
+}
+
+.live-date{
+  margin-top:18px;
+
+  color:#c8cec3;
+
+  font-size:13px;
+}
+
+.time-card{
+  border:
+    1px solid
+    rgba(255,255,255,.12);
+
+  background:
+    rgba(255,255,255,.05);
+
+  backdrop-filter:
+    blur(15px);
+
+  padding:35px;
+
+  border-radius:8px;
+}
+
+.time-card-title{
+  font-family:
+    'Playfair Display',
+    serif;
+
+  font-size:25px;
+
+  margin-bottom:12px;
+}
+
+.time-card p{
+  color:#bfc5ba;
+
+  line-height:1.7;
+
+  font-size:13px;
+}
+
+
+/* =========================================================
+   VIDEO MEMORY
+========================================================= */
+
+.video-section{
+  padding-top:110px;
+}
+
+.video-wrapper{
+  position:relative;
+
+  background:#111;
+
+  padding:12px;
+
+  box-shadow:var(--shadow-heavy);
+}
+
+.video-wrapper video{
+  width:100%;
+
+  display:block;
+
+  max-height:650px;
+
+  background:#111;
+}
+
+.video-caption{
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  gap:20px;
+
+  padding:18px 5px 3px;
+}
+
+.video-caption strong{
+  font-size:14px;
+}
+
+.video-caption span{
+  font-size:11px;
+  color:var(--muted);
+}
+
+
+/* =========================================================
+   CLASS MEMBERS
+========================================================= */
+
+.member-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      1fr
+    );
+
+  gap:16px;
+}
+
+.member{
+  background:var(--paper);
+
+  border:
+    1px solid
+    var(--line);
+
+  padding:10px;
+
+  transition:.35s;
+
+  position:relative;
+
+  overflow:hidden;
+}
+
+.member:hover{
+  transform:
+    translateY(-7px)
+    rotate(-1deg);
+
+  box-shadow:var(--shadow);
+}
+
+.member-photo{
+  aspect-ratio:1/1;
+
+  overflow:hidden;
+
+  background:#e8e4dc;
+}
+
+.member-photo img{
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  display:block;
+
+  transition:.5s;
+}
+
+.member:hover
+.member-photo img{
+  transform:scale(1.07);
+}
+
+.member-info{
+  padding:
+    15px
+    7px
+    8px;
+}
+
+.member-name{
+  font-weight:600;
+  font-size:14px;
+}
+
+.member-role{
+  margin-top:4px;
+
+  color:var(--muted);
+
+  font-size:10px;
+
+  text-transform:uppercase;
+
+  letter-spacing:.1em;
+}
+
+
+/* =========================================================
+   INSTAGRAM
+========================================================= */
+
+.instagram-section{
+  display:grid;
+
+  grid-template-columns:
+    .8fr
+    1.2fr;
+
+  gap:25px;
+
+  align-items:stretch;
+}
+
+.instagram-card{
+  background:
+    linear-gradient(
+      135deg,
+      #f2eadf,
+      #dce4d5
+    );
+
+  padding:45px;
+
+  min-height:300px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:space-between;
+
+  position:relative;
+
+  overflow:hidden;
+}
+
+.instagram-card:after{
+  content:"◎";
+
+  position:absolute;
+
+  right:-30px;
+  top:-60px;
+
+  font-size:240px;
+
+  opacity:.08;
+}
+
+.instagram-kicker{
+  font-size:10px;
+
+  letter-spacing:.2em;
+
+  text-transform:uppercase;
+
+  color:var(--muted);
+}
+
+.instagram-title{
+  font-family:
+    'Playfair Display',
+    serif;
+
+  font-size:
+    clamp(35px,5vw,60px);
+
+  margin-top:15px;
+
+  position:relative;
+
+  z-index:2;
+}
+
+.instagram-handle{
+  font-size:15px;
+
+  margin-top:10px;
+
+  color:#5d6953;
+}
+
+.instagram-btn{
+  display:inline-flex;
+
+  width:max-content;
+
+  align-items:center;
+
+  gap:10px;
+
+  background:var(--dark);
+
+  color:white;
+
+  padding:
+    12px
+    18px;
+
+  border-radius:100px;
+
+  font-size:12px;
+
+  transition:.3s;
+}
+
+.instagram-btn:hover{
+  background:var(--accent);
+
+  transform:
+    translateY(-2px);
+}
+
+.insta-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:10px;
+}
+
+.insta-grid img{
+  width:100%;
+
+  aspect-ratio:1;
+
+  object-fit:cover;
+
+  display:block;
+
+  transition:.3s;
+}
+
+.insta-grid img:hover{
+  transform:scale(.96);
+}
+
+
+/* =========================================================
+   CONFESSION
+========================================================= */
+
+.confess-box{
+  background:var(--paper);
+
+  border:
+    1px solid
+    var(--line);
+
+  padding:50px;
+
+  box-shadow:var(--shadow);
+
+  display:grid;
+
+  grid-template-columns:
+    .8fr
+    1.2fr;
+
+  gap:60px;
+}
+
+.confess-title{
+  font-family:
+    'Playfair Display',
+    serif;
+
+  font-size:
+    clamp(35px,5vw,60px);
+
+  line-height:1;
+}
+
+.confess-desc{
+  color:var(--muted);
+
+  font-size:13px;
+
+  line-height:1.7;
+
+  margin-top:20px;
+}
+
+.confess-form{
+  display:flex;
+
+  flex-direction:column;
+
+  gap:13px;
+}
+
+.confess-form input,
+.confess-form textarea{
+  width:100%;
+
+  border:
+    1px solid
+    var(--line);
+
+  background:#faf8f2;
+
+  padding:
+    14px
+    16px;
+
+  outline:none;
+
+  border-radius:3px;
+
+  color:var(--text);
+
+  resize:vertical;
+}
+
+.confess-form input:focus,
+.confess-form textarea:focus{
+  border-color:var(--accent);
+}
+
+.confess-form textarea{
+  min-height:130px;
+}
+
+.confess-btn{
+  border:0;
+
+  background:var(--dark);
+
+  color:white;
+
+  padding:
+    14px
+    20px;
+
+  cursor:pointer;
+
+  border-radius:100px;
+
+  transition:.3s;
+}
+
+.confess-btn:hover{
+  background:var(--accent);
+
+  transform:
+    translateY(-2px);
+}
+
+.confess-note{
+  font-size:10px;
+
+  color:var(--muted);
+
+  line-height:1.5;
+}
+
+
+/* =========================================================
+   TIMELINE
+========================================================= */
+
+.year-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      1fr
+    );
+
+  gap:15px;
+}
+
+.year{
+  min-height:210px;
+
+  padding:25px;
+
+  background:var(--paper);
+
+  border:
+    1px solid
+    var(--line);
+
+  position:relative;
+
+  overflow:hidden;
+
+  transition:.3s;
+}
+
+.year:hover{
+  transform:
+    translateY(-4px);
+
+  box-shadow:var(--shadow);
+}
+
+.year-number{
+  font-size:70px;
+
+  letter-spacing:-.08em;
+
+  font-weight:700;
+
+  line-height:.9;
+}
+
+.year-name{
+  position:absolute;
+
+  bottom:24px;
+  left:25px;
+
+  font-family:
+    'Playfair Display',
+    serif;
+
+  font-size:23px;
+}
+
+.year-count{
+  position:absolute;
+
+  right:24px;
+  bottom:26px;
+
+  color:var(--muted);
+
+  font-size:11px;
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about-box{
+  display:grid;
+
+  grid-template-columns:
+    1fr
+    1fr;
+
+  gap:50px;
+
+  align-items:center;
+}
+
+.about-big{
+  font-family:
+    'Playfair Display',
+    serif;
+
+  font-size:
+    clamp(35px,5vw,65px);
+
+  line-height:1.05;
+}
+
+.about-text{
+  color:var(--muted);
+
+  font-size:14px;
+
+  line-height:1.9;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+  padding:
+    50px
+    20px
+    100px;
+
+  text-align:center;
+
+  color:var(--muted);
+
+  font-size:11px;
+}
+
+footer strong{
+  color:var(--text);
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal{
+  position:fixed;
+
+  inset:0;
+
+  background:
+    rgba(20,20,18,.82);
+
+  z-index:1000;
+
+  display:none;
+
+  align-items:center;
+
+  justify-content:center;
+
+  padding:25px;
+
+  backdrop-filter:
+    blur(8px);
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-box{
+  max-width:900px;
+
+  width:100%;
+
+  position:relative;
+}
+
+.modal img{
+  width:100%;
+
+  max-height:78vh;
+
+  object-fit:contain;
+
+  display:block;
+}
+
+.modal-caption{
+  color:white;
+
+  margin-top:12px;
+
+  font-size:12px;
+}
+
+.close{
+  position:absolute;
+
+  right:0;
+  top:-45px;
+
+  background:white;
+
+  border:0;
+
+  width:34px;
+  height:34px;
+
+  border-radius:50%;
+
+  cursor:pointer;
+
+  font-size:18px;
+}
+
+
+/* =========================================================
+   MUSIC PLAYER
+========================================================= */
+
+.music-player{
+  position:fixed;
+
+  left:22px;
+  bottom:22px;
+
+  z-index:800;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  padding:
+    8px
+    14px
+    8px
+    8px;
+
+  background:
+    rgba(255,253,248,.90);
+
+  border:
+    1px solid
+    rgba(255,255,255,.8);
+
+  backdrop-filter:
+    blur(16px);
+
+  border-radius:100px;
+
+  box-shadow:
+    0 10px 30px
+    rgba(0,0,0,.12);
+}
+
+.music-btn{
+  width:42px;
+  height:42px;
+
+  border:0;
+
+  border-radius:50%;
+
+  background:var(--dark);
+
+  color:white;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  cursor:pointer;
+
+  font-size:13px;
+
+  transition:.3s ease;
+}
+
+.music-btn:hover{
+  transform:scale(1.08);
+
+  background:var(--accent);
+}
+
+.music-btn.playing{
+  background:var(--accent);
+
+  animation:
+    musicPulse
+    1.6s
+    infinite;
+}
+
+@keyframes musicPulse{
+  0%,100%{
+    box-shadow:
+      0 0 0 0
+      rgba(123,143,104,.25);
+  }
+
+  50%{
+    box-shadow:
+      0 0 0 9px
+      rgba(123,143,104,0);
+  }
+}
+
+.music-info{
+  display:flex;
+
+  flex-direction:column;
+
+  gap:2px;
+
+  padding-right:5px;
+}
+
+.music-info span{
+  font-size:8px;
+
+  letter-spacing:.15em;
+
+  color:var(--muted);
+}
+
+.music-info strong{
+  font-size:11px;
+
+  font-weight:600;
+}
+
+
+
+/* =========================================================
+   SECURE PHOTO UPLOAD
+========================================================= */
+
+.upload-card{
+  break-inside:avoid;
+  margin-bottom:18px;
+  background:linear-gradient(135deg,var(--accent-light),var(--paper));
+  border:1px dashed var(--accent);
+  min-height:230px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  cursor:pointer;
+  transition:.35s;
+}
+.upload-card:hover{
+  transform:translateY(-6px);
+  box-shadow:var(--shadow);
+}
+.upload-card .plus-circle{
+  width:65px;height:65px;border-radius:50%;
+  background:var(--dark);color:white;
+  display:flex;align-items:center;justify-content:center;
+  font-size:30px;margin:auto auto 14px;
+  transition:.3s;
+}
+.upload-card:hover .plus-circle{
+  background:var(--accent);
+  transform:rotate(90deg) scale(1.08);
+}
+.upload-card strong{display:block;font-size:14px;margin-bottom:5px}
+.upload-card span{font-size:11px;color:var(--muted)}
+
+.card-actions{
+  display:flex;
+  gap:6px;
+  margin-top:10px;
+}
+.card-edit{
+  border:1px solid var(--line);
+  background:#faf8f2;
+  color:var(--muted);
+  border-radius:50px;
+  padding:6px 10px;
+  cursor:pointer;
+  font-size:10px;
+  transition:.25s;
+}
+.card-edit:hover{
+  background:var(--dark);
+  color:white;
+  border-color:var(--dark);
+}
+
+.secure-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(20,20,18,.72);
+  z-index:1200;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  backdrop-filter:blur(10px);
+}
+.secure-modal.show{display:flex}
+.secure-box{
+  width:min(500px,100%);
+  background:var(--paper);
+  border:1px solid rgba(255,255,255,.7);
+  box-shadow:var(--shadow-heavy);
+  padding:30px;
+  position:relative;
+}
+.secure-kicker{
+  text-transform:uppercase;
+  letter-spacing:.18em;
+  color:var(--muted);
+  font-size:9px;
+  margin-bottom:9px;
+}
+.secure-box h3{
+  font-family:'Playfair Display',serif;
+  font-size:32px;
+  line-height:1;
+  margin-bottom:9px;
+}
+.secure-box p{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.65;
+  margin-bottom:20px;
+}
+.secure-form{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.secure-form input,
+.secure-form textarea,
+.secure-form select{
+  width:100%;
+  border:1px solid var(--line);
+  background:#faf8f2;
+  padding:12px 13px;
+  outline:none;
+  border-radius:3px;
+  color:var(--text);
+}
+.secure-form input:focus,
+.secure-form textarea:focus,
+.secure-form select:focus{
+  border-color:var(--accent);
+}
+.secure-form textarea{min-height:105px;resize:vertical}
+.secure-actions{
+  display:flex;
+  gap:8px;
+  justify-content:flex-end;
+  margin-top:4px;
+}
+.secure-primary,
+.secure-secondary{
+  border:0;
+  border-radius:100px;
+  padding:11px 16px;
+  cursor:pointer;
+  font-size:11px;
+}
+.secure-primary{background:var(--dark);color:white}
+.secure-primary:hover{background:var(--accent)}
+.secure-secondary{background:#ece9e1;color:var(--text)}
+.secure-close{
+  position:absolute;
+  right:14px;
+  top:14px;
+  width:30px;height:30px;
+  border:1px solid var(--line);
+  background:var(--paper);
+  border-radius:50%;
+  cursor:pointer;
+}
+.upload-preview{
+  width:100%;
+  max-height:230px;
+  object-fit:cover;
+  margin-bottom:15px;
+  display:none;
+}
+.upload-preview.show{display:block}
+.secure-error{
+  min-height:16px;
+  color:#a14f45;
+  font-size:10px;
+}
+.upload-success{
+  position:fixed;
+  left:50%;
+  bottom:28px;
+  transform:translate(-50%,20px);
+  opacity:0;
+  pointer-events:none;
+  z-index:1300;
+  background:var(--dark);
+  color:white;
+  padding:11px 16px;
+  border-radius:100px;
+  font-size:11px;
+  transition:.3s;
+}
+.upload-success.show{
+  opacity:1;
+  transform:translate(-50%,0);
+}
+
+/* =========================================================
+   PERSISTENT CLASS CONTENT CONTROLS
+========================================================= */
+.add-photo-card,.add-member-card{border:1px dashed var(--line);background:rgba(255,255,255,.45);color:var(--ink);cursor:pointer;font:inherit}
+.add-photo-card{min-height:280px;display:flex;align-items:center;justify-content:center;text-align:center;padding:25px;transition:.3s}
+.add-photo-card:hover,.add-member-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-style:solid}
+.card-actions{display:flex;gap:6px;margin-top:9px;flex-wrap:wrap}
+.card-edit,.card-delete,.member-delete{border:1px solid var(--line);background:rgba(255,255,255,.8);color:var(--ink);padding:5px 8px;border-radius:999px;font-size:9px;cursor:pointer}
+.card-delete,.member-delete{color:#9a4f4f}
+.card-edit:hover,.card-delete:hover,.member-delete:hover{background:var(--paper)}
+.add-member-card{position:relative;min-height:250px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:20px}
+.member-plus{width:52px;height:52px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-size:28px;margin-bottom:5px}
+.add-member-card small{color:var(--muted);font-size:10px}
+.member-delete-wrap{position:absolute;right:9px;top:9px;z-index:3}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:850px){
+
+  .hero-inner{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+
+  .member-grid{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+  .instagram-section{
+    grid-template-columns:1fr;
+  }
+
+  .confess-box{
+    grid-template-columns:1fr;
+    gap:35px;
+  }
+
+  .time-container{
+    grid-template-columns:1fr;
+  }
+
+  .about-box{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:760px){
+
+  nav{
+    top:10px;
+  }
+
+  .navlinks{
+    display:none;
+  }
+
+  .hero{
+    padding-top:115px;
+    min-height:auto;
+  }
+
+  .hero-photo{
+    height:420px;
+    width:88%;
+    margin:auto;
+  }
+
+  .hero-label{
+    left:-15px;
+  }
+
+  .section-head{
+    display:block;
+  }
+
+  .section-desc{
+    margin-top:15px;
+  }
+
+  section{
+    padding:65px 0;
+  }
+
+  .year-grid{
+    grid-template-columns:1fr;
+  }
+
+  .memory-note{
+    padding:35px 25px;
+  }
+
+  .member-grid{
+    grid-template-columns:
+      repeat(2,1fr);
+
+    gap:10px;
+  }
+
+  .member{
+    padding:7px;
+  }
+
+  .video-caption{
+    display:block;
+  }
+
+  .video-caption span{
+    display:block;
+    margin-top:5px;
+  }
+
+  .instagram-card{
+    padding:30px;
+  }
+
+  .confess-box{
+    padding:30px 22px;
+  }
+
+  .music-player{
+    left:14px;
+    bottom:14px;
+  }
+  .secure-box{
+    padding:24px 20px;
+  }
+  .secure-actions{
+    flex-wrap:wrap;
+  }
+
+}
+
+</style>
 </head>
+
+
 <body>
 
-  <nav>
-    <a class="brand" href="#"><span class="brand-dot"></span> English Education Archive</a>
-    <div class="navlinks">
-      <a href="#gallery">Gallery</a>
-      <a href="#timeline">Timeline</a>
-      <a href="#about">About</a>
-    </div>
-    <button class="nav-btn" onclick="document.getElementById('gallery').scrollIntoView()">View memories ↗</button>
-  </nav>
 
-  <main>
-    <header class="hero">
-      <div class="hero-inner">
-        <div>
-          <div class="eyebrow">Class archive</div>
-          <h1>Little moments,<br><em>big memories.</em></h1>
-          <p class="hero-copy">
-            Sebuah ruang kecil untuk menyimpan foto, cerita, dan tawa yang kita lewati 
-            selama tahun-tahun kuliah. Karena ada kenangan yang terlalu berharga jika hanya
-            berakhir di galeri HP.
-          </p>
-          <div class="hero-meta">
-            <span class="pill">📷 120+ memories</span>
-            <span class="pill">♡ made with nostalgia</span>
-            <span class="pill">EDU 1 A · Class Archive</span>
-          </div>
-        </div>
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
 
-        <div class="hero-photo">
-          <div class="tape"></div>
-          <!-- GANTI FOTO UTAMA DI BAWAH -->
-          <img src="GAMBAR/514485.jpg" alt="School memory">
-          <div class="hero-label">one chapter,<br>many stories.</div>
-        </div>
-      </div>
-      <div class="scroll-note">scroll to remember ↓</div>
-    </header>
+<nav>
 
-    <section id="gallery">
-      <div class="section-head">
-        <div>
-          <div class="section-kicker">01 / the collection</div>
-          <h2>Photo dump,<br><em>but make it meaningful.</em></h2>
-        </div>
-        <p class="section-desc">Pilih tahun untuk melihat potongan-potongan kecil dari perjalanan kelas kita.</p>
-      </div>
+  <a
+    class="brand"
+    href="#">
 
-      <div class="timeline">
-        <button class="filter active" data-year="all">All memories</button>
-        <button class="filter" data-year="X">Chapter 1</button>
-        <button class="filter" data-year="XI">Chapter 2</button>
-        <button class="filter" data-year="XII">Chapter 3</button>
-        <button class="filter" data-year="event">Etc.</button>
-      </div>
+    <span class="brand-dot"></span>
 
-      <div class="gallery" id="galleryGrid">
-        <!--
-          CARA MENAMBAH FOTO:
-          1. Simpan foto di folder "images"
-          2. Ubah src menjadi "images/nama-foto.jpg"
-          3. Ubah data-year sesuai kategori: X, XI, XII, atau event
-        -->
-        <article class="card" data-year="XII" data-title="Hari terakhir sekolah" data-caption="Akhir dari satu rutinitas, awal dari banyak cerita.">
-          <img src="GAMBAR/A4.jpg" alt="Hari terakhir sekolah">
-          <div class="card-info"><div><div class="card-title">Hari terakhir sekolah</div><div class="card-caption">Akhir dari satu rutinitas, awal dari banyak cerita.</div></div><span class="card-date">XII</span></div>
-        </article>
+    English Education Archive
 
-        <article class="card" data-year="X" data-title="First day" data-caption="Masih malu-malu, belum tahu bakal sejauh apa.">
-          <img src="GAMBAR/A3.jpg" alt="First day">
-          <div class="card-info"><div><div class="card-title">First day</div><div class="card-caption">Masih malu-malu, belum tahu bakal sejauh apa.</div></div><span class="card-date">X</span></div>
-        </article>
+  </a>
 
-        <article class="card" data-year="event" data-title="Class trip" data-caption="Satu perjalanan yang akhirnya jadi bahan cerita bertahun-tahun.">
-          <img src="GAMBAR/A6.jpg" alt="Class trip">
-          <div class="card-info"><div><div class="card-title">Class trip</div><div class="card-caption">Satu perjalanan yang akhirnya jadi bahan cerita bertahun-tahun.</div></div><span class="card-date">EVENT</span></div>
-        </article>
 
-        <article class="card" data-year="XI" data-title="Random Tuesday" data-caption="Nggak ada acara spesial. Justru itu yang bikin kangen.">
-          <img src="GAMBAR/A5.jpg" alt="Friends">
-          <div class="card-info"><div><div class="card-title">Random Tuesday</div><div class="card-caption">Nggak ada acara spesial. Justru itu yang bikin kangen.</div></div><span class="card-date">XI</span></div>
-        </article>
+  <div class="navlinks">
 
-        <article class="card" data-year="event" data-title="School event" data-caption="Ramai, capek, chaotic — tapi seru.">
-          <img src="GAMBAR/A7.jpg" alt="School event">
-          <div class="card-info"><div><div class="card-title">School event</div><div class="card-caption">Ramai, capek, chaotic — tapi seru.</div></div><span class="card-date">EVENT</span></div>
-        </article>
+    <a href="#gallery">
+      Gallery
+    </a>
 
-        <article class="card" data-year="XII" data-title="The squad" data-caption="Orang-orang yang membuat sekolah terasa seperti rumah kedua.">
-          <img src="GAMBAR/A3.jpg" alt="The squad">
-          <div class="card-info"><div><div class="card-title">The squad</div><div class="card-caption">Orang-orang yang membuat sekolah terasa seperti rumah kedua.</div></div><span class="card-date">XII</span></div>
-        </article>
+    <a href="#video">
+      Video
+    </a>
 
-        <article class="card" data-year="XI" data-title="After class" data-caption="Bel pulang bukan berarti obrolan selesai.">
-          <img src="GAMBAR/A4.jpg" alt="After class">
-          <div class="card-info"><div><div class="card-title">After class</div><div class="card-caption">Bel pulang bukan berarti obrolan selesai.</div></div><span class="card-date">XI</span></div>
-        </article>
+    <a href="#members">
+      Members
+    </a>
 
-        <article class="card" data-year="X" data-title="New friends" data-caption="Beberapa orang datang sebagai teman sekelas, lalu menjadi bagian cerita.">
-          <img src="GAMBAR/A 11.jpg" alt="New friends">
-          <div class="card-info"><div><div class="card-title">New friends</div><div class="card-caption">Beberapa orang datang sebagai teman sekelas, lalu menjadi bagian cerita.</div></div><span class="card-date">X</span></div>
-        </article>
+    <a href="#about">
+      About
+    </a>
 
-        <article class="card" data-year="XI" data-title="Random Tuesday" data-caption="Nggak ada acara spesial. Justru itu yang bikin kangen.">
-          <img src="GAMBAR/A5.jpg" alt="Friends">
-          <div class="card-info"><div><div class="card-title">Random Tuesday</div><div class="card-caption">Nggak ada acara spesial. Justru itu yang bikin kangen.</div></div><span class="card-date">XI</span></div>
-        </article>
-      </div>
-
-      <div class="memory-note">
-        <p>“Nanti kita akan lupa detailnya. Tapi semoga kita nggak pernah lupa bagaimana rasanya berada di sini.”</p>
-        <small>— a note to our future selves</small>
-      </div>
-    </section>
-
-    <section id="timeline">
-      <div class="section-head">
-        <div>
-          <div class="section-kicker">02 / chapters</div>
-          <h2>Three years.<br><em>One story.</em></h2>
-        </div>
-        <p class="section-desc">Setiap tahun punya suasana, orang, dan cerita yang berbeda.</p>
-      </div>
-
-      <div class="year-grid">
-        <div class="year"><div class="year-number">01</div><div class="year-name">Class X</div><div class="year-count">the beginning</div></div>
-        <div class="year"><div class="year-number">02</div><div class="year-name">Class XI</div><div class="year-count">the chaos</div></div>
-        <div class="year"><div class="year-number">03</div><div class="year-name">Class XII</div><div class="year-count">the ending</div></div>
-      </div>
-    </section>
-
-    <section id="about">
-      <div class="section-head">
-        <div>
-          <div class="section-kicker">03 / archive note</div>
-          <h2>Not just<br><em>photos.</em></h2> <br
-        </div>
-        <article class="card" data-year="XII" data-title="Hari terakhir sekolah" data-caption="Akhir dari satu rutinitas, awal dari banyak cerita.">
-          <img src="GAMBAR/A 11.jpg" alt="Hari terakhir sekolah">
-          <div class="card-info"><div><div class="card-title">Hari terakhir sekolah</div><div class="card-caption">Akhir dari satu rutinitas, awal dari banyak cerita.</div></div><span class="card-date">XII</span></div>
-        </article>
-        <p class="section-desc">
-          Website ini dibuat sebagai kapsul waktu digital — tempat untuk kembali
-          kapan pun kita ingin mengingat versi diri kita yang pernah ada di sekolah.
-        </p>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <p>Made for the memories · <strong>English Education · archive</strong> · 2026-2030</p>
-  </footer>
-
-  <div class="modal" id="modal">
-    <div class="modal-box">
-      <button class="close" id="close">×</button>
-      <img id="modalImg" src="" alt="">
-      <div class="modal-caption" id="modalCaption"></div>
-    </div>
   </div>
 
-  <script>
-    // Filter gallery
-    const filters = document.querySelectorAll('.filter');
-    const cards = document.querySelectorAll('.card');
 
-    filters.forEach(filter => {
-      filter.addEventListener('click', () => {
-        filters.forEach(f => f.classList.remove('active'));
-        filter.classList.add('active');
+  <button
+    class="nav-btn"
+    onclick="document.getElementById('gallery').scrollIntoView()">
 
-        const year = filter.dataset.year;
-        cards.forEach(card => {
-          card.style.display = (year === 'all' || card.dataset.year === year) ? 'inline-block' : 'none';
+    View memories ↗
+
+  </button>
+
+</nav>
+
+
+
+<main>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<header class="hero">
+
+  <div class="hero-inner">
+
+    <div>
+
+      <div class="eyebrow">
+        Class archive
+      </div>
+
+
+      <h1>
+
+        Little moments,<br>
+
+        <em>
+          big memories.
+        </em>
+
+      </h1>
+
+
+      <p class="hero-copy">
+
+        Sebuah ruang kecil untuk menyimpan foto, video, cerita,
+        dan tawa yang kita lewati selama masa sekolah.
+        Karena ada kenangan yang terlalu berharga jika hanya
+        berakhir di galeri HP.
+
+      </p>
+
+
+      <div class="hero-meta">
+
+        <span class="pill">
+          📷 120+ memories
+        </span>
+
+        <span class="pill">
+          ♡ made with nostalgia
+        </span>
+
+        <span class="pill">
+          EDU 1 A · Class Archive
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="hero-photo">
+
+      <div class="tape"></div>
+
+      <img
+        src="GAMBAR/514485.jpg"
+        alt="School memory">
+
+      <div class="hero-label">
+
+        one chapter,<br>
+        many stories.
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- LIVE CLOCK — HERO -->
+  <div class="hero-clock" aria-label="Jam dan tanggal saat ini">
+    <div class="hero-clock-orbit"></div>
+    <div class="hero-clock-top"><span class="hero-clock-dot"></span><span>LIVE MOMENT</span></div>
+    <div class="hero-clock-time" id="liveTime">00:00:00</div>
+    <div class="hero-clock-date" id="liveDate">Loading...</div>
+    <div class="hero-clock-line"><span></span><i></i><span></span></div>
+  </div>
+
+
+  <div class="scroll-note">
+    scroll to remember ↓
+  </div>
+
+</header>
+
+
+
+<!-- =========================================================
+     GALLERY
+========================================================= -->
+
+<section
+  id="gallery"
+  class="reveal">
+
+  <div class="section-head">
+
+    <div>
+
+      <div class="section-kicker">
+        01 / the collection
+      </div>
+
+      <h2>
+
+        Photo dump,<br>
+
+        <em>
+          but make it meaningful.
+        </em>
+
+      </h2>
+
+    </div>
+
+
+    <p class="section-desc">
+
+      Pilih chapter untuk melihat potongan-potongan kecil
+      dari perjalanan kelas kita.
+
+    </p>
+
+  </div>
+
+
+  <div class="timeline">
+
+    <button
+      class="filter active"
+      data-year="all">
+
+      All memories
+
+    </button>
+
+
+    <button
+      class="filter"
+      data-year="X">
+
+      Chapter 1
+
+    </button>
+
+
+    <button
+      class="filter"
+      data-year="XI">
+
+      Chapter 2
+
+    </button>
+
+
+    <button
+      class="filter"
+      data-year="XII">
+
+      Chapter 3
+
+    </button>
+
+
+    <button
+      class="filter"
+      data-year="event">
+
+      Events
+
+    </button>
+
+  </div>
+
+
+  <div
+    class="gallery"
+    id="galleryGrid">
+
+
+    <!-- SECURE ADD PHOTO -->
+
+    <button
+      type="button"
+      class="upload-card"
+      id="openUpload"
+      aria-label="Tambah foto kenangan">
+
+      <div>
+
+        <div class="plus-circle">
+          +
+        </div>
+
+        <strong>
+          Tambahkan kenangan
+        </strong>
+
+        <span>
+          Kode khusus diperlukan
+        </span>
+
+      </div>
+
+    </button>
+
+    <input
+      type="file"
+      id="photoUpload"
+      accept="image/*"
+      hidden>
+
+
+    <!-- PHOTO 1 -->
+
+    <article
+      class="card"
+      data-year="XII"
+      data-title="Hari terakhir sekolah"
+      data-caption="Akhir dari satu rutinitas, awal dari banyak cerita.">
+
+      <img
+        src="GAMBAR/A4.jpg"
+        alt="Hari terakhir sekolah">
+
+      <div class="card-info">
+
+        <div>
+
+          <div class="card-title">
+            Hari terakhir sekolah
+          </div>
+
+          <div class="card-caption">
+            Akhir dari satu rutinitas, awal dari banyak cerita.
+          </div>
+
+        </div>
+
+        <span class="card-date">
+          XII
+        </span>
+
+      </div>
+
+    </article>
+
+
+    <!-- PHOTO 2 -->
+
+    <article
+      class="card"
+      data-year="X"
+      data-title="First day"
+      data-caption="Masih malu-malu, belum tahu bakal sejauh apa.">
+
+      <img
+        src="GAMBAR/A3.jpg"
+        alt="First day">
+
+      <div class="card-info">
+
+        <div>
+
+          <div class="card-title">
+            First day
+          </div>
+
+          <div class="card-caption">
+            Masih malu-malu, belum tahu bakal sejauh apa.
+          </div>
+
+        </div>
+
+        <span class="card-date">
+          X
+        </span>
+
+      </div>
+
+    </article>
+
+
+    <!-- PHOTO 3 -->
+
+    <article
+      class="card"
+      data-year="event"
+      data-title="Class trip"
+      data-caption="Satu perjalanan yang akhirnya jadi bahan cerita bertahun-tahun.">
+
+      <img
+        src="GAMBAR/A6.jpg"
+        alt="Class trip">
+
+      <div class="card-info">
+
+        <div>
+
+          <div class="card-title">
+            Class trip
+          </div>
+
+          <div class="card-caption">
+            Satu perjalanan yang akhirnya jadi bahan cerita bertahun-tahun.
+          </div>
+
+        </div>
+
+        <span class="card-date">
+          EVENT
+        </span>
+
+      </div>
+
+    </article>
+
+
+    <!-- PHOTO 4 -->
+
+    <article
+      class="card"
+      data-year="XI"
+      data-title="Random Tuesday"
+      data-caption="Nggak ada acara spesial. Justru itu yang bikin kangen.">
+
+      <img
+        src="GAMBAR/A5.jpg"
+        alt="Friends">
+
+      <div class="card-info">
+
+        <div>
+
+          <div class="card-title">
+            Random Tuesday
+          </div>
+
+          <div class="card-caption">
+            Nggak ada acara spesial. Justru itu yang bikin kangen.
+          </div>
+
+        </div>
+
+        <span class="card-date">
+          XI
+        </span>
+
+      </div>
+
+    </article>
+
+
+    <!-- PHOTO 5 -->
+
+    <article
+      class="card"
+      data-year="event"
+      data-title="School event"
+      data-caption="Ramai, capek, chaotic — tapi seru.">
+
+      <img
+        src="GAMBAR/A7.jpg"
+        alt="School event">
+
+      <div class="card-info">
+
+        <div>
+
+          <div class="card-title">
+            School event
+          </div>
+
+          <div class="card-caption">
+            Ramai, capek, chaotic — tapi seru.
+          </div>
+
+        </div>
+
+        <span class="card-date">
+          EVENT
+        </span>
+
+      </div>
+
+    </article>
+
+
+    <!-- PHOTO 6 -->
+
+    <article
+      class="card"
+      data-year="XII"
+      data-title="The squad"
+      data-caption="Orang-orang yang membuat sekolah terasa seperti rumah kedua.">
+
+      <img
+        src="GAMBAR/A3.jpg"
+        alt="The squad">
+
+      <div class="card-info">
+
+        <div>
+
+          <div class="card-title">
+            The squad
+          </div>
+
+          <div class="card-caption">
+            Orang-orang yang membuat sekolah terasa seperti rumah kedua.
+          </div>
+
+        </div>
+
+        <span class="card-date">
+          XII
+        </span>
+
+      </div>
+
+    </article>
+
+
+    <!-- PHOTO 7 -->
+
+    <article
+      class="card"
+      data-year="XI"
+      data-title="After class"
+      data-caption="Bel pulang bukan berarti obrolan selesai.">
+
+      <img
+        src="GAMBAR/A4.jpg"
+        alt="After class">
+
+      <div class="card-info">
+
+        <div>
+
+          <div class="card-title">
+            After class
+          </div>
+
+          <div class="card-caption">
+            Bel pulang bukan berarti obrolan selesai.
+          </div>
+
+        </div>
+
+        <span class="card-date">
+          XI
+        </span>
+
+      </div>
+
+    </article>
+
+
+    <!-- PHOTO 8 -->
+
+    <article
+      class="card"
+      data-year="X"
+      data-title="New friends"
+      data-caption="Beberapa orang datang sebagai teman sekelas, lalu menjadi bagian cerita.">
+
+      <img
+        src="GAMBAR/A 11.jpg"
+        alt="New friends">
+
+      <div class="card-info">
+
+        <div>
+
+          <div class="card-title">
+            New friends
+          </div>
+
+          <div class="card-caption">
+            Beberapa orang datang sebagai teman sekelas,
+            lalu menjadi bagian cerita.
+          </div>
+
+        </div>
+
+        <span class="card-date">
+          X
+        </span>
+
+      </div>
+
+    </article>
+
+
+  </div>
+
+
+  <div class="memory-note">
+
+    <p>
+
+      “Nanti kita akan lupa detailnya.
+      Tapi semoga kita nggak pernah lupa
+      bagaimana rasanya berada di sini.”
+
+    </p>
+
+    <small>
+      — a note to our future selves
+    </small>
+
+  </div>
+
+</section>
+
+
+
+
+
+
+
+<!-- =========================================================
+     VIDEO MEMORY
+========================================================= -->
+
+<section
+  id="video"
+  class="video-section reveal">
+
+  <div class="section-head">
+
+    <div>
+
+      <div class="section-kicker">
+        02 / moving memories
+      </div>
+
+      <h2>
+
+        Memories,<br>
+
+        <em>in motion.</em>
+
+      </h2>
+
+    </div>
+
+
+    <p class="section-desc">
+
+      Bukan hanya foto.
+      Simpan juga momen-momen yang lebih hidup
+      dalam bentuk video.
+
+    </p>
+
+  </div>
+
+
+  <div class="video-wrapper">
+
+    <video
+      controls
+      preload="metadata"
+      poster="GAMBAR/Screenshot 2026-10-03 083106.png">
+
+      <source
+        src="MULTIMEDIA/512473.mp4"
+        type="video/mp4">
+
+      Browser kamu tidak mendukung video.
+
+    </video>
+
+
+    <div class="video-caption">
+
+      <strong>
+        Our Class — The Memory Film
+      </strong>
+
+      <span>
+        press play & remember
+      </span>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     MEMBERS
+========================================================= -->
+
+<section
+  id="members"
+  class="reveal">
+
+  <div class="section-head">
+
+    <div>
+
+      <div class="section-kicker">
+        03 / people
+      </div>
+
+      <h2>
+
+        The people<br>
+
+        <em>behind the memories.</em>
+
+      </h2>
+
+    </div>
+
+
+    <p class="section-desc">
+
+      Setiap orang punya cerita sendiri.
+      Tapi semuanya menjadi satu ketika berada
+      di kelas yang sama.
+
+    </p>
+
+  </div>
+
+
+  <div class="member-grid" id="memberGrid">
+
+    <button class="add-member-card" id="openMemberUpload" type="button">
+      <span class="member-plus">+</span>
+      <strong>Tambah anggota</strong>
+      <small>Wajib kode khusus</small>
+    </button>
+
+    <!-- MEMBER 1 -->
+
+    <div class="member">
+
+      <div class="member-photo">
+
+        <img
+          src="GAMBAR/515281.jpg"
+          alt="Anggota kelas">
+
+      </div>
+
+      <div class="member-info">
+
+        <div class="member-name">
+          SRI MULYANI
+        </div>
+
+        <div class="member-role">
+          Classmate
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- MEMBER 2 -->
+
+    <div class="member">
+
+      <div class="member-photo">
+
+        <img
+          src="GAMBAR/wl.jpg"
+          alt="Anggota kelas">
+
+      </div>
+
+      <div class="member-info">
+
+        <div class="member-name">
+          WULAN NURWIDIAWATI
+        </div>
+
+        <div class="member-role">
+          Classmate
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- MEMBER 3 -->
+
+    <div class="member">
+
+      <div class="member-photo">
+
+        <img
+          src="GAMBAR/al.jpg"
+          alt="Anggota kelas">
+
+      </div>
+
+      <div class="member-info">
+
+        <div class="member-name">
+          ALLICA RETALITA R
+        </div>
+
+        <div class="member-role">
+          Classmate
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- MEMBER 4 -->
+
+    <div class="member">
+
+      <div class="member-photo">
+
+        <img
+          src="GAMBAR/515282.jpg"
+          alt="Anggota kelas">
+
+      </div>
+
+      <div class="member-info">
+
+        <div class="member-name">
+          NAZWA EL SABRIN
+        </div>
+
+        <div class="member-role">
+          Classmate
+        </div>
+
+      </div>
+
+    </div>
+
+<!-- MEMBER 4 -->
+
+    <div class="member">
+
+      <div class="member-photo">
+
+        <img
+          src="GAMBAR/515283.jpg"
+          alt="Anggota kelas">
+
+      </div>
+
+      <div class="member-info">
+
+        <div class="member-name">
+          PIYARA PRASISKA N
+        </div>
+
+        <div class="member-role">
+          Classmate
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- MEMBER 4 -->
+
+    <div class="member">
+
+      <div class="member-photo">
+
+        <img
+          src="GAMBAR/515284.jpg"
+          alt="Anggota kelas">
+
+      </div>
+
+      <div class="member-info">
+
+        <div class="member-name">
+          KHANZA LEOFIRA A
+        </div>
+
+        <div class="member-role">
+          Classmate
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- MEMBER 4 -->
+
+    <div class="member">
+
+      <div class="member-photo">
+
+        <img
+          src="GAMBAR/sk.jpg"
+          alt="Anggota kelas">
+
+      </div>
+
+      <div class="member-info">
+
+        <div class="member-name">
+          SESI KAILA
+        </div>
+
+        <div class="member-role">
+          Classmate
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- MEMBER 4 -->
+
+    <div class="member">
+
+      <div class="member-photo">
+
+        <img
+          src="GAMBAR/in.jpg"
+          alt="Anggota kelas">
+
+      </div>
+
+      <div class="member-info">
+
+        <div class="member-name">
+          INEKE FEBRI
+        </div>
+
+        <div class="member-role">
+          Classmate
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- MEMBER 4 -->
+
+    <div class="member">
+
+      <div class="member-photo">
+
+        <img
+          src="GAMBAR/sla.jpg"
+          alt="Anggota kelas">
+
+      </div>
+
+      <div class="member-info">
+
+        <div class="member-name">
+          SALSA K.N
+        </div>
+
+        <div class="member-role">
+          Classmate
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- MEMBER 4 -->
+
+    <div class="member">
+
+      <div class="member-photo">
+
+        <img
+          src="GAMBAR/rg.jpg"
+          alt="Anggota kelas">
+
+      </div>
+
+      <div class="member-info">
+
+        <div class="member-name">
+          REGGIA
+        </div>
+
+        <div class="member-role">
+          Classmate
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- MEMBER 4 -->
+
+    <div class="member">
+
+      <div class="member-photo">
+
+        <img
+          src="GAMBAR/kh.jpg"
+          alt="Anggota kelas">
+
+      </div>
+
+      <div class="member-info">
+
+        <div class="member-name">
+          INGRID
+        </div>
+
+        <div class="member-role">
+          Classmate
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- MEMBER 4 -->
+
+    <div class="member">
+
+      <div class="member-photo">
+
+        <img
+          src="GAMBAR/NZZ.jpg"
+          alt="Anggota kelas">
+
+      </div>
+
+      <div class="member-info">
+
+        <div class="member-name">
+          NAZWA HANIFAH
+        </div>
+
+        <div class="member-role">
+          Classmate
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- MEMBER 4 -->
+
+    <div class="member">
+
+      <div class="member-photo">
+
+        <img
+          src="GAMBAR/DDF.jpg"
+          alt="Anggota kelas">
+
+      </div>
+
+      <div class="member-info">
+
+        <div class="member-name">
+          DEAS NUGRAHA
+        </div>
+
+        <div class="member-role">
+          Classmate
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+
+    
+  </div> 
+  
+
+</section>
+
+
+<!-- =========================================================
+     INSTAGRAM
+========================================================= -->
+
+<section class="reveal">
+
+  <div class="instagram-section">
+
+
+    <div class="instagram-card">
+
+      <div>
+
+        <div class="instagram-kicker">
+          stay connected
+        </div>
+
+        <div class="instagram-title">
+
+          Our<br>
+          Instagram.
+
+        </div>
+
+        <div class="instagram-handle">
+          @ENGLISHEDUCATION_HU
+        </div>
+
+      </div>
+
+
+      <a
+        class="instagram-btn"
+        href="https://www.instagram.com/englisheducation_hu/"
+        target="_blank"
+        rel="noopener">
+
+        Follow our memories ↗
+
+      </a>
+
+    </div>
+
+
+    <div class="insta-grid">
+
+      <img
+        src="GAMBAR/A3.jpg"
+        alt="Instagram memory">
+
+      <img
+        src="GAMBAR/A4.jpg"
+        alt="Instagram memory">
+
+      <img
+        src="GAMBAR/A5.jpg"
+        alt="Instagram memory">
+
+      <img
+        src="GAMBAR/A6.jpg"
+        alt="Instagram memory">
+
+      <img
+        src="GAMBAR/A7.jpg"
+        alt="Instagram memory">
+
+      <img
+        src="GAMBAR/A1.jpg"
+        alt="Instagram memory">
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CONFESSION
+========================================================= -->
+
+<section class="reveal">
+
+  <div class="section-head">
+
+    <div>
+
+      <div class="section-kicker">
+        04 / say something
+      </div>
+
+      <h2>
+
+        Send a<br>
+
+        <em>confession.</em>
+
+      </h2>
+
+    </div>
+
+
+    <p class="section-desc">
+
+      Ada sesuatu yang ingin disampaikan?
+      Tulis pesan, cerita, atau kalimat yang
+      belum pernah kamu sampaikan.
+
+    </p>
+
+  </div>
+
+
+  <div class="confess-box">
+
+
+    <div>
+
+      <div class="confess-title">
+
+        Maybe<br>
+        someone<br>
+        needs to hear it.
+
+      </div>
+
+
+      <p class="confess-desc">
+
+        Kalian bisa mengirim pesan secara anonim.
+        Tekan tombol di bawah untuk menuju
+        halaman confession.
+
+      </p>
+
+    </div>
+
+
+    <!-- CONFESSION FORM -->
+
+    <form
+      class="confess-form"
+      id="confessForm"
+      action="https://confess.ngl.link/englisheducation_hu"
+      method="get"
+      target="_blank">
+
+
+
+
+
+      <button
+        class="confess-btn"
+        type="submit">
+
+        Kirim Confession ↗
+
+      </button>
+
+
+      <div class="confess-note">
+
+        Setelah menekan tombol, kamu akan
+        diarahkan ke halaman ngl.
+
+      </div>
+
+
+    </form>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     TIMELINE
+========================================================= -->
+
+
+<!-- =========================================================
+     ABOUT
+========================================================= -->
+
+<section
+  id="about"
+  class="reveal">
+
+  <div class="about-box">
+
+
+    <div class="about-big">
+
+      Not just<br>
+
+      <em>photos.</em>
+
+    </div>
+
+
+    <div class="about-text">
+
+      Website ini dibuat sebagai kapsul waktu digital —
+      tempat untuk kembali kapan pun kita ingin mengingat
+      versi diri kita yang pernah ada di kampus.
+
+      <br><br>
+
+      Foto mungkin akan tersimpan.
+      Video mungkin akan tetap ada.
+      Tetapi yang paling penting adalah cerita
+      di balik semuanya.
+
+      <br><br>
+
+      <strong>
+
+        One class. Hundreds of moments.
+        One story worth remembering.
+
+      </strong>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+  <p>
+
+    Made for the memories ·
+
+    <strong>
+      English Education · archive
+    </strong>
+
+    · 2026-2030
+
+  </p>
+
+</footer>
+
+
+
+<!-- =========================================================
+     SECURE UPLOAD MODALS
+========================================================= -->
+
+<div class="secure-modal" id="codeModal">
+  <div class="secure-box">
+    <button class="secure-close" type="button" data-close-secure="codeModal">×</button>
+    <div class="secure-kicker">private access</div>
+    <h3>Masukkan kode.</h3>
+    <p>Hanya orang yang memiliki kode khusus yang bisa menambahkan atau mengedit kenangan.</p>
+
+    <form class="secure-form" id="codeForm">
+      <input
+        type="password"
+        id="uploadCode"
+        placeholder="Masukkan kode khusus"
+        autocomplete="off"
+        required>
+
+      <div class="secure-error" id="codeError"></div>
+
+      <div class="secure-actions">
+        <button class="secure-secondary" type="button" data-close-secure="codeModal">Batal</button>
+        <button class="secure-primary" type="submit">Lanjutkan →</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="secure-modal" id="photoDetailsModal">
+  <div class="secure-box">
+    <button class="secure-close" type="button" data-close-secure="photoDetailsModal">×</button>
+    <div class="secure-kicker">new memory</div>
+    <h3 id="photoDetailsHeading">Atur detail foto.</h3>
+    <p>Isi judul dan caption sebelum foto ditambahkan ke galeri.</p>
+
+    <img class="upload-preview" id="uploadPreview" alt="Preview foto">
+
+    <form class="secure-form" id="photoDetailsForm">
+      <input type="text" id="photoTitle" maxlength="80" placeholder="Title / judul foto" required>
+      <textarea id="photoCaption" maxlength="220" placeholder="Caption / cerita singkat" required></textarea>
+
+      <select id="photoChapter">
+        <option value="event">Events</option>
+        <option value="X">Chapter 1</option>
+        <option value="XI">Chapter 2</option>
+        <option value="XII">Chapter 3</option>
+      </select>
+
+      <div class="secure-actions">
+        <button class="secure-secondary" type="button" data-close-secure="photoDetailsModal">Batal</button>
+        <button class="secure-primary" type="submit" id="savePhotoDetails">Tambahkan foto →</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="upload-success" id="uploadToast">Foto berhasil ditambahkan.</div>
+
+
+<!-- =========================================================
+     MEMBER MODAL
+========================================================= -->
+
+<div class="secure-modal" id="memberDetailsModal">
+  <div class="secure-box">
+    <button class="secure-close" type="button" data-close-secure="memberDetailsModal">×</button>
+    <div class="secure-kicker">class member</div>
+    <h3>Tambah anggota kelas.</h3>
+    <p>Isi nama, peran, dan foto anggota.</p>
+    <img class="upload-preview" id="memberPreview" alt="Preview anggota">
+    <form class="secure-form" id="memberDetailsForm">
+      <input type="text" id="memberNameInput" maxlength="60" placeholder="Nama anggota" required>
+      <input type="text" id="memberRoleInput" maxlength="40" placeholder="Peran / keterangan" value="Classmate" required>
+      <input type="file" id="memberPhotoInput" accept="image/*" required>
+      <div class="secure-actions">
+        <button class="secure-secondary" type="button" data-close-secure="memberDetailsModal">Batal</button>
+        <button class="secure-primary" type="submit">Tambah anggota →</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- =========================================================
+     IMAGE MODAL
+========================================================= -->
+
+<div
+  class="modal"
+  id="modal">
+
+  <div class="modal-box">
+
+    <button
+      class="close"
+      id="close">
+
+      ×
+
+    </button>
+
+
+    <img
+      id="modalImg"
+      src=""
+      alt="">
+
+
+    <div
+      class="modal-caption"
+      id="modalCaption">
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     MUSIC PLAYER
+========================================================= -->
+
+<div class="music-player">
+
+  <button
+    id="musicBtn"
+    class="music-btn"
+    aria-label="Play or pause music">
+
+    <span id="musicIcon">
+      ▶
+    </span>
+
+  </button>
+
+
+  <div class="music-info">
+
+    <span id="musicStatus">
+      MUSIC OFF
+    </span>
+
+    <strong>
+      Young Dumb & Broke ♫
+    </strong>
+
+  </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     AUDIO
+========================================================= -->
+
+<audio
+  id="bgMusic"
+  loop>
+
+  <source
+    src="MULTIMEDIA/rr.mp3"
+    type="audio/mpeg">
+
+</audio>
+
+
+
+<script>
+
+/* =========================================================
+   FILTER GALLERY
+========================================================= */
+
+const filters =
+  document.querySelectorAll('.filter');
+
+const gallery =
+  document.getElementById('galleryGrid');
+
+
+function refreshCards(){
+
+  return gallery.querySelectorAll('.card');
+
+}
+
+
+filters.forEach(filter => {
+
+  filter.addEventListener('click', () => {
+
+    filters.forEach(f =>
+      f.classList.remove('active')
+    );
+
+
+    filter.classList.add('active');
+
+
+    const year =
+      filter.dataset.year;
+
+
+    refreshCards().forEach(card => {
+
+      card.style.display =
+
+        (
+          year === 'all' ||
+          card.dataset.year === year
+        )
+
+        ? 'inline-block'
+        : 'none';
+
+    });
+
+  });
+
+});
+
+
+
+/* =========================================================
+   IMAGE MODAL
+========================================================= */
+
+const modal =
+  document.getElementById('modal');
+
+const modalImg =
+  document.getElementById('modalImg');
+
+const modalCaption =
+  document.getElementById('modalCaption');
+
+const close =
+  document.getElementById('close');
+
+
+function activateCard(card){
+
+  card.addEventListener('click', () => {
+
+    const img =
+      card.querySelector('img');
+
+
+    modalImg.src =
+      img.src;
+
+
+    modalImg.alt =
+      img.alt;
+
+
+    modalCaption.textContent =
+      card.dataset.title +
+      ' — ' +
+      card.dataset.caption;
+
+
+    modal.classList.add('show');
+
+  });
+
+}
+
+
+refreshCards().forEach(
+  activateCard
+);
+
+
+/*
+  Foto bawaan juga bisa diedit title/caption,
+  tetapi tetap harus melewati kode khusus.
+*/
+refreshCards().forEach(card => {
+
+  const info = card.querySelector('.card-info');
+  if(!info) return;
+
+  const textWrap = info.querySelector(':scope > div');
+  if(!textWrap) return;
+
+  const actions = document.createElement('div');
+  actions.className = 'card-actions';
+
+  const editButton = document.createElement('button');
+  editButton.type = 'button';
+  editButton.className = 'card-edit';
+  editButton.textContent = 'Edit title & caption';
+
+  editButton.addEventListener('click', event => {
+    event.stopPropagation();
+    requestEdit(card);
+  });
+
+  actions.appendChild(editButton);
+  textWrap.appendChild(actions);
+
+});
+
+
+function closeModal(){
+
+  modal.classList.remove('show');
+
+}
+
+
+close.addEventListener(
+  'click',
+  closeModal
+);
+
+
+modal.addEventListener(
+  'click',
+  e => {
+
+    if(e.target === modal){
+
+      closeModal();
+
+    }
+
+  }
+);
+
+
+document.addEventListener(
+  'keydown',
+  e => {
+
+    if(e.key === 'Escape'){
+
+      closeModal();
+
+    }
+
+  }
+);
+
+
+
+/* =========================================================
+   SECURE + PERSISTENT CLASS CONTENT
+========================================================= */
+
+/* GANTI kode ini dengan kode rahasia kelasmu. */
+const UPLOAD_ACCESS_CODE = 'GANTI_KODE_RAHASIA';
+
+const openUpload = document.getElementById('openUpload');
+const photoUpload = document.getElementById('photoUpload');
+const codeModal = document.getElementById('codeModal');
+const codeForm = document.getElementById('codeForm');
+const uploadCode = document.getElementById('uploadCode');
+const codeError = document.getElementById('codeError');
+const photoDetailsModal = document.getElementById('photoDetailsModal');
+const photoDetailsForm = document.getElementById('photoDetailsForm');
+const uploadPreview = document.getElementById('uploadPreview');
+const photoTitle = document.getElementById('photoTitle');
+const photoCaption = document.getElementById('photoCaption');
+const photoChapter = document.getElementById('photoChapter');
+const photoDetailsHeading = document.getElementById('photoDetailsHeading');
+const savePhotoDetails = document.getElementById('savePhotoDetails');
+const uploadToast = document.getElementById('uploadToast');
+
+const openMemberUpload = document.getElementById('openMemberUpload');
+const memberDetailsModal = document.getElementById('memberDetailsModal');
+const memberDetailsForm = document.getElementById('memberDetailsForm');
+const memberPhotoInput = document.getElementById('memberPhotoInput');
+const memberPreview = document.getElementById('memberPreview');
+const memberNameInput = document.getElementById('memberNameInput');
+const memberRoleInput = document.getElementById('memberRoleInput');
+const memberGrid = document.getElementById('memberGrid');
+
+let pendingFile = null;
+let editingCard = null;
+let pendingMemberFile = null;
+let authenticated = false;
+let secureAction = '';
+let db;
+
+/* IndexedDB membuat foto/anggota tetap ada setelah refresh dan browser ditutup. */
+const DB_NAME = 'EnglishEducationArchiveDB';
+const DB_VERSION = 1;
+
+function openDatabase(){
+  return new Promise((resolve,reject)=>{
+    const request = indexedDB.open(DB_NAME, DB_VERSION);
+    request.onupgradeneeded = event => {
+      const database = event.target.result;
+      if(!database.objectStoreNames.contains('photos')){
+        database.createObjectStore('photos', {keyPath:'id'});
+      }
+      if(!database.objectStoreNames.contains('members')){
+        database.createObjectStore('members', {keyPath:'id'});
+      }
+    };
+    request.onsuccess = event => { db = event.target.result; resolve(db); };
+    request.onerror = () => reject(request.error);
+  });
+}
+
+function idbPut(store, value){
+  return new Promise((resolve,reject)=>{
+    const tx = db.transaction(store,'readwrite');
+    tx.objectStore(store).put(value);
+    tx.oncomplete = resolve;
+    tx.onerror = () => reject(tx.error);
+  });
+}
+
+function idbDelete(store, id){
+  return new Promise((resolve,reject)=>{
+    const tx = db.transaction(store,'readwrite');
+    tx.objectStore(store).delete(id);
+    tx.oncomplete = resolve;
+    tx.onerror = () => reject(tx.error);
+  });
+}
+
+function idbGetAll(store){
+  return new Promise((resolve,reject)=>{
+    const tx = db.transaction(store,'readonly');
+    const request = tx.objectStore(store).getAll();
+    request.onsuccess = () => resolve(request.result || []);
+    request.onerror = () => reject(request.error);
+  });
+}
+
+function openCodeModal(action){
+  secureAction = action;
+  codeError.textContent = '';
+  uploadCode.value = '';
+  codeModal.classList.add('show');
+  setTimeout(()=>uploadCode.focus(),80);
+}
+
+function closeSecureModal(id){
+  document.getElementById(id).classList.remove('show');
+}
+
+document.querySelectorAll('[data-close-secure]').forEach(button=>{
+  button.addEventListener('click',()=>closeSecureModal(button.dataset.closeSecure));
+});
+
+openUpload.addEventListener('click',()=>{
+  authenticated = false;
+  editingCard = null;
+  pendingFile = null;
+  openCodeModal('add-photo');
+});
+
+openMemberUpload.addEventListener('click',()=>{
+  authenticated = false;
+  openCodeModal('add-member');
+});
+
+codeForm.addEventListener('submit',event=>{
+  event.preventDefault();
+  const enteredCode = uploadCode.value.trim();
+
+  if(enteredCode !== UPLOAD_ACCESS_CODE || !enteredCode){
+    codeError.textContent = 'Kode salah. Silakan coba lagi.';
+    uploadCode.select();
+    return;
+  }
+
+  authenticated = true;
+  codeError.textContent = '';
+  codeModal.classList.remove('show');
+
+  if(secureAction === 'add-photo'){
+    photoUpload.click();
+  }else if(secureAction === 'add-member'){
+    memberDetailsForm.reset();
+    memberRoleInput.value = 'Classmate';
+    memberPreview.classList.remove('show');
+    pendingMemberFile = null;
+    memberDetailsModal.classList.add('show');
+  }else if(secureAction === 'edit-photo'){
+    preparePhotoEdit();
+  }else if(secureAction === 'delete-photo'){
+    deletePhotoAfterCode();
+  }else if(secureAction === 'delete-member'){
+    deleteMemberAfterCode();
+  }
+});
+
+photoUpload.addEventListener('change',function(){
+  if(!authenticated){ this.value=''; return; }
+  const file = this.files[0];
+  if(!file) return;
+  if(!file.type.startsWith('image/')){
+    showUploadToast('File harus berupa gambar.');
+    this.value='';
+    return;
+  }
+
+  pendingFile = file;
+  editingCard = null;
+  uploadPreview.src = URL.createObjectURL(file);
+  uploadPreview.classList.add('show');
+  photoDetailsHeading.textContent = 'Atur detail foto.';
+  savePhotoDetails.textContent = 'Tambahkan foto →';
+  photoTitle.value = file.name.replace(/\.[^/.]+$/,'').slice(0,80);
+  photoCaption.value = 'Kenangan yang baru ditambahkan.';
+  photoChapter.value = 'event';
+  photoDetailsModal.classList.add('show');
+  setTimeout(()=>{photoTitle.focus();photoTitle.select();},80);
+  this.value='';
+});
+
+photoDetailsForm.addEventListener('submit',async event=>{
+  event.preventDefault();
+  if(!authenticated) return;
+
+  const title = photoTitle.value.trim();
+  const caption = photoCaption.value.trim();
+  const chapter = photoChapter.value;
+  if(!title || !caption) return;
+
+  try{
+    if(editingCard){
+      const id = editingCard.dataset.localId;
+      if(id){
+        const photos = await idbGetAll('photos');
+        const saved = photos.find(p=>p.id === id);
+        if(saved){
+          saved.title = title;
+          saved.caption = caption;
+          saved.chapter = chapter;
+          await idbPut('photos',saved);
+        }
+      }
+
+      editingCard.dataset.title = title;
+      editingCard.dataset.caption = caption;
+      editingCard.dataset.year = chapter;
+      editingCard.querySelector('.card-title').textContent = title;
+      editingCard.querySelector('.card-caption').textContent = caption;
+      editingCard.querySelector('.card-date').textContent = chapter==='event'?'EVENT':chapter;
+      editingCard.querySelector('img').alt = title;
+
+      closeSecureModal('photoDetailsModal');
+      showUploadToast('Detail foto berhasil disimpan.');
+      editingCard = null;
+      authenticated = false;
+      return;
+    }
+
+    if(!pendingFile) return;
+    const dataUrl = await fileToDataURL(pendingFile);
+    const id = 'photo_' + Date.now() + '_' + Math.random().toString(36).slice(2,8);
+
+    await idbPut('photos',{id,title,caption,chapter,dataUrl,createdAt:Date.now()});
+    renderSavedPhoto({id,title,caption,chapter,dataUrl});
+
+    closeSecureModal('photoDetailsModal');
+    showUploadToast('Foto berhasil disimpan di web ini.');
+    pendingFile = null;
+    authenticated = false;
+  }catch(error){
+    console.error(error);
+    showUploadToast('Gagal menyimpan. Coba lagi.');
+  }
+});
+
+function fileToDataURL(file){
+  return new Promise((resolve,reject)=>{
+    const reader = new FileReader();
+    reader.onload = ()=>resolve(reader.result);
+    reader.onerror = ()=>reject(reader.error);
+    reader.readAsDataURL(file);
+  });
+}
+
+function addCardActions(card){
+  if(card.querySelector('.card-actions')) return;
+  const info = card.querySelector('.card-info');
+  if(!info) return;
+  const textWrap = info.querySelector(':scope > div');
+  if(!textWrap) return;
+
+  const actions = document.createElement('div');
+  actions.className = 'card-actions';
+
+  const editButton = document.createElement('button');
+  editButton.type='button';
+  editButton.className='card-edit';
+  editButton.textContent='Edit';
+  editButton.addEventListener('click',event=>{
+    event.stopPropagation();
+    requestEdit(card);
+  });
+
+  const deleteButton = document.createElement('button');
+  deleteButton.type='button';
+  deleteButton.className='card-delete';
+  deleteButton.textContent='Hapus';
+  deleteButton.addEventListener('click',event=>{
+    event.stopPropagation();
+    requestDeletePhoto(card);
+  });
+
+  actions.append(editButton,deleteButton);
+  textWrap.appendChild(actions);
+}
+
+function renderSavedPhoto(photo){
+  const article = document.createElement('article');
+  article.className='card';
+  article.dataset.year=photo.chapter;
+  article.dataset.title=photo.title;
+  article.dataset.caption=photo.caption;
+  article.dataset.localId=photo.id;
+  article.innerHTML='';
+
+  const img=document.createElement('img');
+  img.src=photo.dataUrl;
+  img.alt=photo.title;
+
+  const info=document.createElement('div');
+  info.className='card-info';
+  const textWrap=document.createElement('div');
+  const titleEl=document.createElement('div');
+  titleEl.className='card-title';
+  titleEl.textContent=photo.title;
+  const captionEl=document.createElement('div');
+  captionEl.className='card-caption';
+  captionEl.textContent=photo.caption;
+  const date=document.createElement('span');
+  date.className='card-date';
+  date.textContent=photo.chapter==='event'?'EVENT':photo.chapter;
+
+  textWrap.append(titleEl,captionEl);
+  info.append(textWrap,date);
+  article.append(img,info);
+  gallery.appendChild(article);
+  addCardActions(article);
+  activateCard(article);
+}
+
+function requestEdit(card){
+  editingCard=card;
+  pendingFile=null;
+  authenticated=false;
+  openCodeModal('edit-photo');
+}
+
+function preparePhotoEdit(){
+  if(!editingCard) return;
+  photoDetailsHeading.textContent='Edit detail foto.';
+  savePhotoDetails.textContent='Simpan perubahan';
+  photoTitle.value=editingCard.dataset.title || '';
+  photoCaption.value=editingCard.dataset.caption || '';
+  photoChapter.value=editingCard.dataset.year || 'event';
+  const existingImg=editingCard.querySelector('img');
+  uploadPreview.src=existingImg.src;
+  uploadPreview.classList.add('show');
+  photoDetailsModal.classList.add('show');
+  setTimeout(()=>{photoTitle.focus();photoTitle.select();},80);
+}
+
+function requestDeletePhoto(card){
+  editingCard=card;
+  authenticated=false;
+  openCodeModal('delete-photo');
+}
+
+async function deletePhotoAfterCode(){
+  if(!editingCard) return;
+  const id=editingCard.dataset.localId;
+  if(!id){
+    showUploadToast('Foto bawaan website tidak dapat dihapus dari penyimpanan lokal.');
+    editingCard=null;
+    authenticated=false;
+    return;
+  }
+  if(!confirm('Hapus foto ini dari galeri?')) return;
+  await idbDelete('photos',id);
+  editingCard.remove();
+  editingCard=null;
+  authenticated=false;
+  showUploadToast('Foto berhasil dihapus.');
+}
+
+/* ---------------- MEMBERS ---------------- */
+
+function addMemberActions(card,id){
+  if(card.querySelector('.member-delete-wrap')) return;
+  const wrap=document.createElement('div');
+  wrap.className='member-delete-wrap';
+  const button=document.createElement('button');
+  button.type='button';
+  button.className='member-delete';
+  button.textContent='Hapus';
+  button.addEventListener('click',event=>{
+    event.stopPropagation();
+    requestDeleteMember(card,id);
+  });
+  wrap.appendChild(button);
+  card.appendChild(wrap);
+}
+
+function renderSavedMember(member){
+  const card=document.createElement('div');
+  card.className='member';
+  card.dataset.localId=member.id;
+
+  const photo=document.createElement('div');
+  photo.className='member-photo';
+  const img=document.createElement('img');
+  img.src=member.dataUrl;
+  img.alt=member.name;
+  photo.appendChild(img);
+
+  const info=document.createElement('div');
+  info.className='member-info';
+  const name=document.createElement('div');
+  name.className='member-name';
+  name.textContent=member.name;
+  const role=document.createElement('div');
+  role.className='member-role';
+  role.textContent=member.role;
+  info.append(name,role);
+  card.append(photo,info);
+  memberGrid.appendChild(card);
+  addMemberActions(card,member.id);
+}
+
+memberPhotoInput.addEventListener('change',()=>{
+  const file=memberPhotoInput.files[0];
+  pendingMemberFile=file || null;
+  if(file){
+    memberPreview.src=URL.createObjectURL(file);
+    memberPreview.classList.add('show');
+  }
+});
+
+memberDetailsForm.addEventListener('submit',async event=>{
+  event.preventDefault();
+  if(!authenticated || !pendingMemberFile) return;
+
+  const name=memberNameInput.value.trim();
+  const role=memberRoleInput.value.trim();
+  if(!name || !role) return;
+
+  try{
+    const dataUrl=await fileToDataURL(pendingMemberFile);
+    const id='member_'+Date.now()+'_'+Math.random().toString(36).slice(2,8);
+    const member={id,name,role,dataUrl,createdAt:Date.now()};
+    await idbPut('members',member);
+    renderSavedMember(member);
+    closeSecureModal('memberDetailsModal');
+    showUploadToast('Anggota berhasil ditambahkan.');
+    pendingMemberFile=null;
+    authenticated=false;
+  }catch(error){
+    console.error(error);
+    showUploadToast('Gagal menyimpan anggota.');
+  }
+});
+
+let memberToDelete=null;
+function requestDeleteMember(card,id){
+  memberToDelete={card,id};
+  authenticated=false;
+  openCodeModal('delete-member');
+}
+
+async function deleteMemberAfterCode(){
+  if(!memberToDelete) return;
+  if(!confirm('Hapus anggota ini dari daftar kelas?')) return;
+  await idbDelete('members',memberToDelete.id);
+  memberToDelete.card.remove();
+  memberToDelete=null;
+  authenticated=false;
+  showUploadToast('Anggota berhasil dihapus.');
+}
+
+function showUploadToast(message){
+  uploadToast.textContent=message;
+  uploadToast.classList.add('show');
+  setTimeout(()=>uploadToast.classList.remove('show'),2500);
+}
+
+async function loadPersistentContent(){
+  try{
+    await openDatabase();
+    const photos=await idbGetAll('photos');
+    photos.sort((a,b)=>(a.createdAt||0)-(b.createdAt||0));
+    photos.forEach(renderSavedPhoto);
+
+    const members=await idbGetAll('members');
+    members.sort((a,b)=>(a.createdAt||0)-(b.createdAt||0));
+    members.forEach(renderSavedMember);
+
+    refreshCards().forEach(addCardActions);
+  }catch(error){
+    console.error('IndexedDB:',error);
+    showUploadToast('Penyimpanan browser tidak tersedia.');
+  }
+}
+
+/* Kartu bawaan tetap bisa diedit, tetapi edit/hapus selalu minta kode. */
+refreshCards().forEach(addCardActions);
+loadPersistentContent();
+
+
+/* =========================================================
+   LIVE CLOCK
+========================================================= */
+
+const liveTime =
+  document.getElementById('liveTime');
+
+const liveDate =
+  document.getElementById('liveDate');
+
+
+function updateClock(){
+
+  const now =
+    new Date();
+
+
+  const time =
+    now.toLocaleTimeString(
+      'id-ID',
+      {
+        hour:'2-digit',
+        minute:'2-digit',
+        second:'2-digit',
+        hour12:false
+      }
+    );
+
+
+  const date =
+    now.toLocaleDateString(
+      'id-ID',
+      {
+        weekday:'long',
+        day:'numeric',
+        month:'long',
+        year:'numeric'
+      }
+    );
+
+
+  liveTime.textContent =
+    time;
+
+
+  liveDate.textContent =
+    date;
+
+}
+
+
+updateClock();
+
+
+setInterval(
+  updateClock,
+  1000
+);
+
+
+
+/* =========================================================
+   MUSIC PLAYER
+========================================================= */
+
+const music =
+  document.getElementById('bgMusic');
+
+const musicBtn =
+  document.getElementById('musicBtn');
+
+const musicIcon =
+  document.getElementById('musicIcon');
+
+const musicStatus =
+  document.getElementById('musicStatus');
+
+
+musicBtn.addEventListener(
+  'click',
+  () => {
+
+    if(music.paused){
+
+      music.play()
+
+        .then(() => {
+
+          musicIcon.textContent =
+            'Ⅱ';
+
+          musicStatus.textContent =
+            'MUSIC ON';
+
+          musicBtn.classList.add(
+            'playing'
+          );
+
+        })
+
+        .catch(error => {
+
+          console.log(
+            'Musik gagal diputar:',
+            error
+          );
+
         });
-      });
-    });
 
-    // Image modal
-    const modal = document.getElementById('modal');
-    const modalImg = document.getElementById('modalImg');
-    const modalCaption = document.getElementById('modalCaption');
-    const close = document.getElementById('close');
+    }
 
-    cards.forEach(card => {
-      card.addEventListener('click', () => {
-        const img = card.querySelector('img');
-        modalImg.src = img.src;
-        modalImg.alt = img.alt;
-        modalCaption.textContent = card.dataset.title + ' — ' + card.dataset.caption;
-        modal.classList.add('show');
-      });
-    });
+    else{
 
-    function closeModal(){ modal.classList.remove('show'); }
-    close.addEventListener('click', closeModal);
-    modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
-    document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
-  </script>
+      music.pause();
+
+
+      musicIcon.textContent =
+        '▶';
+
+
+      musicStatus.textContent =
+        'MUSIC OFF';
+
+
+      musicBtn.classList.remove(
+        'playing'
+      );
+
+    }
+
+  }
+);
+
+
+music.addEventListener(
+  'ended',
+  () => {
+
+    musicIcon.textContent =
+      '▶';
+
+
+    musicStatus.textContent =
+      'MUSIC OFF';
+
+
+    musicBtn.classList.remove(
+      'playing'
+    );
+
+  }
+);
+
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealElements =
+  document.querySelectorAll(
+    '.reveal'
+  );
+
+
+const revealObserver =
+  new IntersectionObserver(
+    entries => {
+
+      entries.forEach(
+        entry => {
+
+          if(entry.isIntersecting){
+
+            entry.target.classList.add(
+              'visible'
+            );
+
+          }
+
+        }
+      );
+
+    },
+    {
+      threshold:.12
+    }
+  );
+
+
+revealElements.forEach(
+  element =>
+    revealObserver.observe(element)
+);
+
+</script>
+
 </body>
 </html>
